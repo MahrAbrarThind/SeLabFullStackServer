@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 //importing routes
 import userRoutes from './Routes/userRoutes.js';
@@ -8,6 +9,17 @@ import { connectDB } from './Config/connectDB.js';
 
 const app = express();
 app.use(express.json());
+
+
+
+const corsConfig={
+    origin:"*",
+    credentials:true,
+    methods:["GET","POST","PUT","DELETE"]
+  };
+  app.options("",cors(corsConfig));
+  app.use(cors(corsConfig))
+  
 
 
 //setting dotenv variable
